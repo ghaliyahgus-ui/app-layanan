@@ -39,10 +39,23 @@ class ServiceTypeSeeder extends Seeder
         );
 
         Tariff::firstOrCreate(
-            ['service_type_id' => $landLoan->id],
+            [
+                'service_type_id' => $landLoan->id,
+                'unit' => TariffUnit::PerDay,
+            ],
             [
                 'amount' => 50000.00,
-                'unit' => TariffUnit::PerDay,
+                'is_active' => true,
+            ]
+        );
+
+        Tariff::firstOrCreate(
+            [
+                'service_type_id' => $landLoan->id,
+                'unit' => TariffUnit::PerActivity,
+            ],
+            [
+                'amount' => 250000.00,
                 'is_active' => true,
             ]
         );
